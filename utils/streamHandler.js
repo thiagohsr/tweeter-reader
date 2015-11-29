@@ -13,7 +13,7 @@ module.exports = function(stream, io) {
     };
 
     var tweetEntry = new Tweet(tweet);
-
+    console.log('Dados antes ');
     tweetEntry.save(function(err){
       if(!err){
         io.emit('tweet', tweet);

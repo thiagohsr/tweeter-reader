@@ -1,13 +1,14 @@
 var JSX = require('node-jsx').install();
+var ReactDOM = require('react-dom/server');
 var React = require('react');
-var TweetApp = require('./components/TweetsApp.react');
+var TweetsApp = require('./components/TweetsApp.react');
 var Tweet = require('./models/Tweet');
 
 module.exports = {
   index: function(req, res) {
     Tweet.getTweets(0,0, function (tweets, pages) {
-      var markup = React.renderComponentToString(
-        TweetsApp({
+      var markup = ReactDOM.renderToString(
+        React.createElement(TweetsApp,{
           tweets: tweets
         })
       );
